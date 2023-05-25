@@ -22,6 +22,20 @@ function getAllMessages() {
     });
 }
 
+function createMessage(message) {
+  let query = `INSERT INTO messages (title, text)
+		VALUES ('${message.title}', '${message.text}');
+	`;
+
+  return pool
+    .query(query)
+    .then(console.log)
+    .catch((err) => {
+      throw new Error(err);
+    });
+}
+
 module.exports = {
   getAllMessages,
+  createMessage,
 };

@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllMessages } = require('./db');
+const { getAllMessages, createMessage } = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,6 +19,19 @@ app.get('/api/messages', (req, res) => {
   getAllMessages()
     .then((messages) => {
       res.json(messages);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
+
+app.post('/api/messages', (req, res) => {
+  const newMessage = req.body;
+
+  createMessage(newMessage)
+    .then(() => {
+      res.sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
