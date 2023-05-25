@@ -2,7 +2,7 @@ const express = require('express');
 // const { getAllSongs, getSingleSong, createSong } = require('./db');
 
 const app = express();
-const PORT = 8000;
+process.env.PORT || 5000;
 app.use(express.json());
 
 app.listen(PORT, () => {
