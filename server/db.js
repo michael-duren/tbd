@@ -26,7 +26,7 @@ function createMessage(message) {
   const newMessage = { ...message, timestamp: new Date() };
 
   let query = `INSERT INTO messages (title, text)
-		VALUES ('${message.title}', '${message.text}');
+		VALUES ('${newMessage.title}', '${newMessage.text}');
 	`;
 
   return pool
