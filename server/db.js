@@ -24,7 +24,7 @@ function getAllMessages() {
 
 function createMessage(message) {
   let query = `INSERT INTO messages (title, text, timestamp)
-		VALUES ('${message.title}', '${message.text}', '${new Date()}');
+		VALUES ('${message.title}', '${message.text}', NOW());
 	`;
 
   return pool
