@@ -12,7 +12,7 @@ const pool = new pg.Pool({
 function getAllMessages() {
   let query = 'SELECT * FROM messages';
 
-  pool
+  return pool
     .query(query)
     .then((result) => {
       return result.rows;
