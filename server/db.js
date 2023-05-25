@@ -9,10 +9,19 @@ const pool = new pg.Pool({
   password: process.env.DATABASE_PASSWORD,
 });
 
-function getAllSongs() {
-  return pool.query('SELECT * FROM songs').then((result) => result.rows);
+function getAllMessages() {
+  let query = 'SELECT * FROM messages';
+
+  pool
+    .query(query)
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      throw new Error(err);
+    });
 }
 
 module.exports = {
-  getAllSongs,
+  getAllMessages,
 };
